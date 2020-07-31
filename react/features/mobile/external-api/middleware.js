@@ -22,13 +22,13 @@ import {
 import { MiddlewareRegistry } from '../../base/redux';
 import { ENTER_PICTURE_IN_PICTURE } from '../picture-in-picture';
 
-import { sendEvent } from './functions';
+import { sendEvent, isLocalVideoMuted } from './functions';
 
-import { SET_VIDEO_MUTED, SET_AUDIO_MUTED, isAudioMuted, setAudioMuted } from '../../base/media'
+import { SET_VIDEO_MUTED, SET_AUDIO_MUTED, isAudioMuted, setAudioMuted, setVideoMuted } from '../../base/media'
 
 import { APP_WILL_MOUNT, getAppProp } from '../../base/app';
 
-import { CMD_SET_MUTED } from './constants';
+import { CMD_SET_AUDIO_MUTED, CMD_SET_VIDEO_MUTED } from './constants';
 
 /**
  * Event which will be emitted on the native side to indicate the conference
@@ -342,10 +342,18 @@ function _nativeEvent(store) {
 
     if( externalAPIScope ) {
         EVENT_EMITTER = new NativeEventEmitter(NativeModules.ExternalAPI);
-        this.eventListener = EVENT_EMITTER.addListener(CMD_SET_MUTED, (event) => {
+        EVENT_EMITTER.addListener(CMD_SET_AUDIO_MUTED, (event) => {
             var audio = isAudioMuted(store)
+            dispatch(setAudioMuted(!audio, /* ensureTrack */ true));
+            console.log(`JS EVENT FROM ${CMD_SET_AUDIO_MUTED}`, event) // "someValue"
+        });
+
+        EVENT_EMITTER.addListener(CMD_SET_VIDEO_MUTED, (event) => {
+            // var audio = isAudioMuted(store)
             // dispatch(setAudioMuted(!audio, /* ensureTrack */ true));
-           console.log(`GET EVENT FROM ${CMD_SET_MUTED}`, audio) // "someValue"
+            var video = isLocalVideoMuted(store)
+            dispatch(setVideoMuted( !video, /* ensureTrack */ true));
+           console.log(`JS EVENT FROM ${CMD_SET_VIDEO_MUTED}`, event) // "someValue"
         });
     }
         

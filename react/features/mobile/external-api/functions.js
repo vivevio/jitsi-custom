@@ -4,6 +4,10 @@ import { NativeModules } from 'react-native';
 
 import { getAppProp } from '../../base/app';
 
+import {
+    isLocalVideoTrackMuted,
+} from '../../base/tracks';
+
 /**
  * Sends a specific event to the native counterpart of the External API. Native
  * apps may listen to such events via the mechanisms provided by the (native)
@@ -24,4 +28,8 @@ export function sendEvent(store: Object, name: string, data: Object) {
 
     externalAPIScope
         && NativeModules.ExternalAPI.sendEvent(name, data, externalAPIScope);
+}
+
+export function isLocalVideoMuted(store: Object,) {
+    return isLocalVideoTrackMuted(store.getState()['features/base/tracks'])
 }

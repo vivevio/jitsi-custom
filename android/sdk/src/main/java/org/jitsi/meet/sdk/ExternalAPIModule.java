@@ -16,15 +16,16 @@
 
 package org.jitsi.meet.sdk;
 
+import android.util.Log;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.module.annotations.ReactModule;
-
-import org.jitsi.meet.sdk.log.JitsiMeetLogger;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
+import org.jitsi.meet.sdk.log.JitsiMeetLogger;
 
 /**
  * Module implementing an API for sending events from JavaScript to native code.
@@ -37,6 +38,8 @@ public class ExternalAPIModule
 
     private static final String TAG = NAME;
 
+    public static ReactApplicationContext RC;
+
 
     /**
      * Initializes a new module instance. There shall be a single instance of
@@ -47,6 +50,7 @@ public class ExternalAPIModule
      */
     public ExternalAPIModule(ReactApplicationContext reactContext) {
         super(reactContext);
+        RC = reactContext;
 
     }
 
@@ -89,13 +93,13 @@ public class ExternalAPIModule
         }
     }
 
-    public static void sendCommand(ReactApplicationContext context, String eventName,String params) {
 
-        JitsiMeetLogger.d(" Emint event: " + eventName + " with PARAM: " + params);
-
-        context
-        .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-        .emit(eventName, params);
+    @ReactMethod
+    public static void sendCommand(String eventName, String params) {
+        Log.d("EXTERNAL COMMAND", "EMIT EVENT " + eventName +" FROM EXTERNAL COMMAND");
+        RC.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit(eventName, params);
     }
+
 
 }
