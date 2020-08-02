@@ -25,6 +25,7 @@
 		0BCA49611EC4B6C600B793EE /* Proximity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BCA495E1EC4B6C600B793EE /* Proximity.m */; };
 		0BD906EA1EC0C00300C8C18E /* JitsiMeet.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BD906E81EC0C00300C8C18E /* JitsiMeet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F65EECE1D95DA94561BB47E /* libPods-JitsiMeet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F2ADC957FF109849B7FCA1 /* libPods-JitsiMeet.a */; };
+		426CDB6424D6DDDF009A34CC /* ExternalAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 426CDB6324D6DDDF009A34CC /* ExternalAPI.h */; };
 		6C31EDC820C06D490089C899 /* recordingOn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C31EDC720C06D490089C899 /* recordingOn.mp3 */; };
 		6C31EDCA20C06D530089C899 /* recordingOff.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6C31EDC920C06D530089C899 /* recordingOff.mp3 */; };
 		75635B0A20751D6D00F29C9F /* joined.wav in Resources */ = {isa = PBXBuildFile; fileRef = 75635B0820751D6D00F29C9F /* joined.wav */; };
@@ -86,6 +87,7 @@
 		0BD906E51EC0C00300C8C18E /* JitsiMeet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JitsiMeet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BD906E81EC0C00300C8C18E /* JitsiMeet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JitsiMeet.h; sourceTree = "<group>"; };
 		0BD906E91EC0C00300C8C18E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		426CDB6324D6DDDF009A34CC /* ExternalAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExternalAPI.h; sourceTree = "<group>"; };
 		6C31EDC720C06D490089C899 /* recordingOn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = recordingOn.mp3; path = ../../sounds/recordingOn.mp3; sourceTree = "<group>"; };
 		6C31EDC920C06D530089C899 /* recordingOff.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = recordingOff.mp3; path = ../../sounds/recordingOff.mp3; sourceTree = "<group>"; };
 		75635B0820751D6D00F29C9F /* joined.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = joined.wav; path = ../../sounds/joined.wav; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				0B93EF7D1EC9DDCD0030D24D /* RCTBridgeWrapper.m */,
 				C8AFD27D2462C613000293D2 /* InfoPlistUtil.h */,
 				C8AFD27E2462C613000293D2 /* InfoPlistUtil.m */,
+				426CDB6324D6DDDF009A34CC /* ExternalAPI.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				0B412F181EDEC65D00B1A0A6 /* JitsiMeetView.h in Headers */,
 				0B93EF7E1EC9DDCD0030D24D /* RCTBridgeWrapper.h in Headers */,
 				DE81A2DE2317ED5400AE1940 /* JitsiMeetBaseLogHandler.h in Headers */,
+				426CDB6424D6DDDF009A34CC /* ExternalAPI.h in Headers */,
 				DE65AACC2318028300290BEC /* JitsiMeetBaseLogHandler+Private.h in Headers */,
 				0B412F221EDEF6EA00B1A0A6 /* JitsiMeetViewDelegate.h in Headers */,
 				0BD906EA1EC0C00300C8C18E /* JitsiMeet.h in Headers */,

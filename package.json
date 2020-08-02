@@ -146,7 +146,7 @@
     "validate": "npm ls",
     "build-sdk-android": "./android/scripts/release-sdk.sh ../birruMobile/birru-sdk/android",
     "build-sdk-ios": "xcodebuild -workspace ios/jitsi-meet.xcworkspace -scheme JitsiMeet -destination='generic/platform=iOS' -configuration Release archive",
-    "cp-ios": "cp -r  /Users/vive/Library/Developer/Xcode/DerivedData/jitsi-meet-gitbweruzgtosifrwbqzbzinixmw/Build/Intermediates.noindex/ArchiveIntermediates/JitsiMeet/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/JitsiMeet.framework ./birru-sdk/ios/JitsiMeet.framework"
+    "cp-ios": "cp -r  /Users/vive/Library/Developer/Xcode/DerivedData/jitsi-meet-gitbweruzgtosifrwbqzbzinixmw/Build/Intermediates.noindex/ArchiveIntermediates/JitsiMeet/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/JitsiMeet.framework ./birru-sdk/ios"
   },
   "browser": {
     "jQuery-Impromptu": "jQuery-Impromptu/src/jquery-impromptu.js"

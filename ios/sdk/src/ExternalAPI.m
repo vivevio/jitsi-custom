@@ -14,17 +14,16 @@
  * limitations under the License.
  */
 
-#import <React/RCTBridgeModule.h>
-
-
-#import "JitsiMeetView+Private.h"
-
-@interface ExternalAPI : NSObject<RCTBridgeModule>
-@end
+#import "ExternalAPI.h"
 
 @implementation ExternalAPI
 
 RCT_EXPORT_MODULE();
+
+- (NSArray<NSString *> *)supportedEvents
+{
+  return @[@"setAudioMuted", @"setVideoMuted", @"testEvent"];
+}
 
 /**
  * Make sure all methods in this module are invoked on the main/UI thread.
@@ -48,7 +47,7 @@ RCT_EXPORT_METHOD(sendEvent:(NSString *)name
     // the native ExternalAPI module so that the latter may match the former
     // to the native JitsiMeetView which hosts it.
     JitsiMeetView *view = [JitsiMeetView viewForExternalAPIScope:scope];
-
+    
     if (!view) {
         return;
     }
@@ -60,7 +59,7 @@ RCT_EXPORT_METHOD(sendEvent:(NSString *)name
     }
 
     SEL sel = NSSelectorFromString([self methodNameFromEventName:name]);
-    
+
     if (sel && [delegate respondsToSelector:sel]) {
         [delegate performSelector:sel withObject:data];
     }
@@ -86,6 +85,12 @@ RCT_EXPORT_METHOD(sendEvent:(NSString *)name
    [methodName appendString:@":"];
 
    return methodName;
+}
+
+- (void)sendCommand:(NSString *)eventName
+{
+  
+  [self sendEventWithName:eventName body:@{@"name": eventName}];
 }
 
 @end

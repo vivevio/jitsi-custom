@@ -52,10 +52,6 @@ MiddlewareRegistry.register(store => next => action => {
     const { type } = action;
 
     switch (type) {
-        case APP_WILL_MOUNT: {
-            _appWillMount(store);
-            break;
-        }
 
         case CONFERENCE_FAILED: {
             const { error, ...data } = action;
@@ -354,6 +350,10 @@ function _nativeEvent(store) {
             var video = isLocalVideoMuted(store)
             dispatch(setVideoMuted( !video, /* ensureTrack */ true));
            console.log(`JS EVENT FROM ${CMD_SET_VIDEO_MUTED}`, event) // "someValue"
+        });
+
+        EVENT_EMITTER.addListener("testEvent", (event) => {
+            console.log("JS TEST EVENT FROM NATIVE", event)
         });
     }
         
