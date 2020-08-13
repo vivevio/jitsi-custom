@@ -24,7 +24,7 @@ import { ENTER_PICTURE_IN_PICTURE } from '../picture-in-picture';
 
 import { sendEvent, isLocalVideoMuted } from './functions';
 
-import { SET_VIDEO_MUTED, SET_AUDIO_MUTED, isAudioMuted, setAudioMuted, setVideoMuted } from '../../base/media'
+import { SET_VIDEO_MUTED, SET_AUDIO_MUTED, isAudioMuted, setAudioMuted, setVideoMuted, isVideoMutedByUser } from '../../base/media'
 
 import { APP_WILL_MOUNT, getAppProp } from '../../base/app';
 
@@ -341,20 +341,16 @@ function _nativeEvent(store) {
         EVENT_EMITTER.addListener(CMD_SET_AUDIO_MUTED, (event) => {
             var audio = isAudioMuted(store)
             dispatch(setAudioMuted(!audio, /* ensureTrack */ true));
-            console.log(`JS EVENT FROM ${CMD_SET_AUDIO_MUTED}`, event) // "someValue"
+            console.log(`JS EVENT FROM ${CMD_SET_AUDIO_MUTED}`, audio) // "someValue"
         });
 
         EVENT_EMITTER.addListener(CMD_SET_VIDEO_MUTED, (event) => {
-            // var audio = isAudioMuted(store)
-            // dispatch(setAudioMuted(!audio, /* ensureTrack */ true));
-            var video = isLocalVideoMuted(store)
-            dispatch(setVideoMuted( !video, /* ensureTrack */ true));
-           console.log(`JS EVENT FROM ${CMD_SET_VIDEO_MUTED}`, event) // "someValue"
+            var video = isVideoMutedByUser(store)
+            dispatch(setVideoMuted(!video));
+           console.log(`JS EVENT FROM ${CMD_SET_VIDEO_MUTED}`, video) // "someValue"
         });
 
-        EVENT_EMITTER.addListener("testEvent", (event) => {
-            console.log("JS TEST EVENT FROM NATIVE", event)
-        });
+        EVENT_EMITTER.addListener("testEvent", (event) => { });
     }
         
 }
