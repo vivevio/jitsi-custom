@@ -117,14 +117,15 @@ StateListenerRegistry.register(
             maxReceiverVideoQuality,
             preferredVideoQuality
         } = currentState;
+        const changedConference = conference !== previousState.conference;
         const changedPreferredVideoQuality
             = preferredVideoQuality !== previousState.preferredVideoQuality;
         const changedMaxVideoQuality = maxReceiverVideoQuality !== previousState.maxReceiverVideoQuality;
 
-        if (changedPreferredVideoQuality || changedMaxVideoQuality) {
+        if (changedConference || changedPreferredVideoQuality || changedMaxVideoQuality) {
             _setReceiverVideoConstraint(conference, preferredVideoQuality, maxReceiverVideoQuality);
         }
-        if (changedPreferredVideoQuality) {
+        if (changedConference || changedPreferredVideoQuality) {
             _setSenderVideoConstraint(conference, preferredVideoQuality);
         }
     });
@@ -460,7 +461,10 @@ function _sendTones({ getState }, next, action) {
  */
 function _setReceiverVideoConstraint(conference, preferred, max) {
     if (conference) {
-        conference.setReceiverVideoConstraint(Math.min(preferred, max));
+        const value = Math.min(preferred, max);
+
+        conference.setReceiverVideoConstraint(value);
+        logger.info(`setReceiverVideoConstraint: ${value}`);
     }
 }
 
@@ -620,7 +624,7 @@ function _updateLocalParticipantInConference({ dispatch, getState }, next, actio
 
             // When the local user role is updated to moderator and we have a pending subject change
             // which was not reflected we need to set it (the first time we tried was before becoming moderator).
-            if (pendingSubjectChange !== subject) {
+            if (typeof pendingSubjectChange !== 'undefined' && pendingSubjectChange !== subject) {
                 dispatch(setSubject(pendingSubjectChange));
             }
         }
