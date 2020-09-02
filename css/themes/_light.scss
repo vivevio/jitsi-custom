@@ -14,7 +14,7 @@ $sliderThumbBackground: #3572b0;
 /**
 * Buttons
 */
-$buttonBackground: #44A5FF;
+$buttonBackground: #27AE60;
 $buttonHoverBackground: #2c4062;
 $buttonBorder: transparent;
 $buttonHoverBorder: transparent;
@@ -26,23 +26,23 @@ $buttonLightBorder: #ccc;
 $buttonLightHoverBorder: #999;
 
 $buttonLinkBackground: transparent;
-$buttonLinkColor: #0090e8;
+$buttonLinkColor: #27AE60;
 
-$primaryButtonBackground: #3572b0;
-$primaryButtonHoverBackground: #2a67a5;
+$primaryButtonBackground: #27AE60;
+$primaryButtonHoverBackground: #2c4062;
 $primaryButtonColor: $baseLight;
 $primaryButtonFontWeight: 400;
 
 $buttonShadowColor: #192d4f;
 
-$overlayButtonBg: #0074E0;
+$overlayButtonBg: #27AE60;
 
 /**
 * Color variables
 **/
 $defaultBackground: #474747;
 $filmstripOnlyOverlayBg: #000;
-$reloadProgressBarBg: #0074E0;
+$reloadProgressBarBg: #27AE60;
 
 /**
  * Dialog colors
@@ -71,8 +71,8 @@ $defaultDarkSelectionColor: #ccc;
 $buttonFontWeight: 400;
 $labelFontWeight: 400;
 $hintFontSize: em(13, 14);
-$linkFontColor: #3572b0;
-$linkHoverFontColor: darken(#3572b0, 10%);
+$linkFontColor: #27AE60;
+$linkHoverFontColor: darken(#27AE60, 10%);
 $dropdownColor: #333;
 $errorColor: #c61600;
 
@@ -112,4 +112,4 @@ $selectActiveItemBg: darken($controlBackground, 20%);
 /**
  * TODO: Replace by themed component.
  */
-$videoQualityActive: #4C9AFF;
+$videoQualityActive: #27AE60;
