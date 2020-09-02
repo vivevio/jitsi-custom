@@ -1,5 +1,7 @@
 // @flow
 
+declare var JitsiMeetJS: Object;
+
 import uuid from 'uuid';
 
 import { getRoomName } from '../base/conference';
@@ -21,8 +23,10 @@ import {
     SET_DIALOUT_COUNTRY,
     SET_DIALOUT_NUMBER,
     SET_DIALOUT_STATUS,
+    SET_PREJOIN_DISPLAY_NAME_REQUIRED,
     SET_SKIP_PREJOIN,
     SET_JOIN_BY_PHONE_DIALOG_VISIBLITY,
+    SET_PRECALL_TEST_RESULTS,
     SET_PREJOIN_DEVICE_ERRORS,
     SET_PREJOIN_PAGE_VISIBILITY
 } from './actionTypes';
@@ -198,14 +202,15 @@ export function initPrejoin(tracks: Object[], errors: Object) {
 }
 
 /**
- * Joins the conference.
+ * Action used to start the conference.
  *
+ * @param {Object} options - The config options that override the default ones (if any).
  * @returns {Function}
  */
-export function joinConference() {
-    return function(dispatch: Function) {
-        dispatch(setPrejoinPageVisibility(false));
-        dispatch(startConference());
+export function joinConference(options?: Object) {
+    return {
+        type: PREJOIN_START_CONFERENCE,
+        options
     };
 }
 
@@ -222,7 +227,26 @@ export function joinConferenceWithoutAudio() {
         if (audioTrack) {
             await dispatch(replaceLocalTrack(audioTrack, null));
         }
-        dispatch(joinConference());
+
+        dispatch(joinConference({
+            startSilent: true
+        }));
+    };
+}
+
+/**
+ * Initializes the 'precallTest' and executes one test, storing the results.
+ *
+ * @param {Object} conferenceOptions - The conference options.
+ * @returns {Function}
+ */
+export function makePrecallTest(conferenceOptions: Object) {
+    return async function(dispatch: Function) {
+        await JitsiMeetJS.precallTest.init(conferenceOptions);
+
+        const results = await JitsiMeetJS.precallTest.execute();
+
+        dispatch(setPrecallTestResults(results));
     };
 }
 
@@ -343,6 +367,17 @@ export function setDialOutCountry(value: Object) {
 }
 
 /**
+ * Action used to set the stance of the display name.
+ *
+ * @returns {Object}
+ */
+export function setPrejoinDisplayNameRequired() {
+    return {
+        type: SET_PREJOIN_DISPLAY_NAME_REQUIRED
+    };
+}
+
+/**
  * Action used to set the dial out number.
  *
  * @param {string} value - The dial out number.
@@ -382,6 +417,19 @@ export function setJoinByPhoneDialogVisiblity(value: boolean) {
 }
 
 /**
+ * Action used to set data from precall test.
+ *
+ * @param {Object} value - The precall test results.
+ * @returns {Object}
+ */
+export function setPrecallTestResults(value: Object) {
+    return {
+        type: SET_PRECALL_TEST_RESULTS,
+        value
+    };
+}
+
+/**
  * Action used to set the initial errors after creating the tracks.
  *
  * @param {Object} value - The track errors.
@@ -404,16 +452,5 @@ export function setPrejoinPageVisibility(value: boolean) {
     return {
         type: SET_PREJOIN_PAGE_VISIBILITY,
         value
-    };
-}
-
-/**
- * Action used to mark the start of the conference.
- *
- * @returns {Object}
- */
-function startConference() {
-    return {
-        type: PREJOIN_START_CONFERENCE
     };
 }
