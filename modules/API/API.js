@@ -963,6 +963,12 @@ class API {
         });
     }
 
+    notifyShowToolbox() {
+        this._sendEvent({
+            name: 'show-toolbox'
+        });
+    }
+
     /**
      * Disposes the allocated resources.
      *

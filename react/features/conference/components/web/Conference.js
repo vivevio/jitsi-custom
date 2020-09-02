@@ -232,6 +232,7 @@ class Conference extends AbstractConference<Props, *> {
      * @returns {void}
      */
     _onShowToolbar() {
+        APP.API.notifyShowToolbox();
         this.props.dispatch(showToolbox());
     }
 
