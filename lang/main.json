@@ -731,7 +731,8 @@
             "toggleCamera": "Camera",
             "toggleFilmstrip": "Toggle filmstrip",
             "videomute": "Toggle mute video",
-            "videoblur": "Toggle video blur"
+            "videoblur": "Toggle video blur",
+            "downloadAbsensi": "Download Absensi"
         },
         "addPeople": "Add people to your call",
         "audioOnlyOff": "Enable Video Chat",

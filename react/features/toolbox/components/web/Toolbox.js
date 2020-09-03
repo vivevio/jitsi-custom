@@ -23,7 +23,8 @@ import {
     IconRaisedHand,
     IconRec,
     IconShareDesktop,
-    IconShareVideo
+    IconShareVideo,
+    IconDownload
 } from '../../../base/icons';
 import {
     getLocalParticipant,
@@ -981,6 +982,18 @@ class Toolbox extends Component<Props, State> {
     }
 
     /**
+     * Dispatches an action for download absensi.
+     *
+     * @private
+     * @returns {void}
+     */
+    _onDownloadAbsensi() {
+        const participants = APP.store.getState()['features/base/participants'];
+        APP.API.sendParticipantsData(participants);
+        console.log('absensi sent')
+    }
+
+    /**
      * Renders the list elements of the overflow menu.
      *
      * @private
@@ -995,7 +1008,15 @@ class Toolbox extends Component<Props, State> {
             t
         } = this.props;
 
+
         return [
+            this._shouldShowButton('download-participant-list')
+                && <OverflowMenuItem
+                    accessibilityLabel = { t('toolbar.accessibilityLabel.downloadAbsensi') }
+                    icon = { IconDownload }
+                    key = 'download-absensi'
+                    onClick = { this._onDownloadAbsensi }
+                    text = "Download Absensi" />,
             this._isProfileVisible()
                 && <OverflowMenuProfileItem
                     key = 'profile'

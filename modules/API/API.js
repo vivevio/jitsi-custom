@@ -969,6 +969,13 @@ class API {
         });
     }
 
+    sendParticipantsData(participants) {
+        this._sendEvent({
+            name: 'download-absensi',
+            participants
+        });
+    }
+
     /**
      * Disposes the allocated resources.
      *

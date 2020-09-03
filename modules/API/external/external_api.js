@@ -85,7 +85,8 @@ const events = {
     'subject-change': 'subjectChange',
     'suspend-detected': 'suspendDetected',
     'tile-view-changed': 'tileViewChanged',
-    'show-toolbox': 'show-toolbox'
+    'show-toolbox': 'show-toolbox',
+    'download-absensi': 'downloadAbsensi'
 };
 
 /**
