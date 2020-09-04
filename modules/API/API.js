@@ -1,6 +1,7 @@
 // @flow
 
 import Logger from 'jitsi-meet-logger';
+import _ from 'lodash';
 
 import * as JitsiMeetConferenceEvents from '../../ConferenceEvents';
 import {
@@ -970,9 +971,21 @@ class API {
     }
 
     sendParticipantsData(participants) {
+
+        var filter_participants = [];
+        _.forEach(participants, function(row) {
+
+            filter_participants.push({
+                name: row.name,
+                email: row.email
+            })
+        });
+
+        // console.log('SEND EVENT', participants, filter_participants)
+
         this._sendEvent({
             name: 'download-absensi',
-            participants
+            participants: filter_participants
         });
     }
 

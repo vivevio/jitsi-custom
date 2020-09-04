@@ -990,7 +990,7 @@ class Toolbox extends Component<Props, State> {
     _onDownloadAbsensi() {
         const participants = APP.store.getState()['features/base/participants'];
         APP.API.sendParticipantsData(participants);
-        console.log('absensi sent')
+        console.log('absensi sent', participants)
     }
 
     /**
