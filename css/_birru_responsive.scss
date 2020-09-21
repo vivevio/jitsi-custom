@@ -309,13 +309,11 @@ button.fserWm {
         }
 
         input.editdisplayname {
-            transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
 
         &.display-name-on-video {
             .displayname {
-                transform: translateX(-50%) translateY(0);
                 opacity: 1;
             }
 
@@ -325,11 +323,11 @@ button.fserWm {
 
 
 @media screen and (max-width: 400px) {
-    .atlaskit-portal,
-    .new-toolbox,
-    .subject {
-        display: none;
-    }
+    // .atlaskit-portal,
+    // .new-toolbox,
+    // .subject {
+    //     display: none;
+    // }
 
     #dominantSpeaker {
         transform: scale(0.5) translateY(-100%);
@@ -342,6 +340,13 @@ button.fserWm {
 
     .vertical-filmstrip .filmstrip.reduce-height {
         height: 100%;
+    }
+
+    .new-toolbox .toolbox-content .button-group-center .toolbox-button:nth-child(2) .toolbox-icon {
+        background-color: transparent;
+        border: none;
+        width: 40px;
+        height: 40px;
     }
 
 }

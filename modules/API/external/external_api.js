@@ -47,7 +47,9 @@ const commands = {
     toggleFilmStrip: 'toggle-film-strip',
     toggleShareScreen: 'toggle-share-screen',
     toggleTileView: 'toggle-tile-view',
-    toggleVideo: 'toggle-video'
+    toggleVideo: 'toggle-video',
+    hideToolbox: 'hide-toolbox',
+    showToolbox: 'show-toolbox',
 };
 
 /**

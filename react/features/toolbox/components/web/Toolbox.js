@@ -1232,7 +1232,7 @@ class Toolbox extends Component<Props, State> {
         const buttonsRight = [];
 
         const smallThreshold = 700;
-        const verySmallThreshold = 500;
+        const verySmallThreshold = 360;
 
         let minSpaceBetweenButtons = 48;
         let widthPlusPaddingOfButton = 56;
@@ -1318,7 +1318,7 @@ class Toolbox extends Component<Props, State> {
 
         overflowMenuContent.splice(
             1, 0, ...this._renderMovedButtons(movedButtons));
-
+        
         return (
             <div className = 'toolbox-content'>
                 <div className = 'button-group-left'>

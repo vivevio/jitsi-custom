@@ -29,6 +29,10 @@ import { muteAllParticipants } from '../../react/features/remote-video-menu/acti
 import { toggleTileView } from '../../react/features/video-layout';
 import { setVideoQuality } from '../../react/features/video-quality';
 import { getJitsiMeetTransport } from '../transport';
+import { hideToolbox, showToolbox } from '../../react/features/toolbox/actions.web'
+import {
+    setToolboxVisible
+} from '../../react/features/toolbox/actions.native';
 
 import { API_ID, ENDPOINT_TEXT_MESSAGE_NAME } from './constants';
 
@@ -308,6 +312,14 @@ function initCommands() {
             } else {
                 logger.error('No recording or streaming session found');
             }
+        },
+
+        'hide-toolbox': () => {
+            APP.store.dispatch(setToolboxVisible(false))
+        },
+
+        'show-toolbox': () => {
+            showToolbox(4000)
         }
     };
     transport.on('event', ({ data, name }) => {
