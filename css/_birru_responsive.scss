@@ -224,6 +224,10 @@ button.fserWm {
 .videocontainer.display-avatar-only .displayNameContainer {
     visibility: visible !important;
     opacity: 1 !important;
+    margin-left: 11px;
+    background: #31b76a;
+    padding: 8px 23px;
+    bottom: -6px;
 }
 
 .remote-videos-container {
@@ -282,7 +286,7 @@ button.fserWm {
             height: auto;
             left: 7px;
             padding: 12px 6px 12px 14px;
-            background: #191818;
+            background: transparent;
             border-radius: 3px;
         }
     }
@@ -348,5 +352,32 @@ button.fserWm {
         width: 40px;
         height: 40px;
     }
+
+}
+
+.remotevideomenu .popupmenu__item .popupmenu__icon .jitsi-icon {
+    svg {
+        fill: #fff;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .Modal__FillScreen-sc-1jmnqyd-0 {
+        .Content__Footer-sc-1npw367-9 {
+            margin-bottom: 100px;
+            transform: scale(1.5) translateX(-70px);
+        }
+    }
+}
+
+@media screen and (max-width: 250px) {
+    .atlaskit-portal,
+    .new-toolbox,
+    .subject,
+    .large-video-labels.opening.with-filmstrip,
+    #videospace #remoteVideos {
+        display: none;
+    }
+
 
 }

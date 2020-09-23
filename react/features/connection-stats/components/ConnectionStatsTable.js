@@ -490,13 +490,13 @@ class ConnectionStatsTable extends Component<Props> {
             <table className = 'connection-info__container'>
                 <tbody>
                     { this._renderConnectionSummary() }
-                    { this._renderBitrate() }
+                    {/* { this._renderBitrate() } */}
                     { this._renderPacketLoss() }
-                    { isRemoteVideo ? this._renderE2eRtt() : null }
-                    { isRemoteVideo ? this._renderRegion() : null }
-                    { this._renderResolution() }
-                    { this._renderFrameRate() }
-                    { this._renderCodecs() }
+                    {/* { isRemoteVideo ? this._renderE2eRtt() : null } */}
+                    {/* { isRemoteVideo ? this._renderRegion() : null } */}
+                    {/* { this._renderResolution() } */}
+                    {/* { this._renderFrameRate() } */}
+                    {/* { this._renderCodecs() } */}
                     { isRemoteVideo ? null : this._renderBridgeCount() }
                 </tbody>
             </table>
