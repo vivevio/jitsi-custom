@@ -224,10 +224,38 @@ button.fserWm {
 .videocontainer.display-avatar-only .displayNameContainer {
     visibility: visible !important;
     opacity: 1 !important;
-    margin-left: 11px;
-    background: #31b76a;
-    padding: 8px 23px;
-    bottom: -6px;
+    // margin-left: 11px;
+    // padding: 8px 23px;
+    // bottom: -6px;
+    background: transparent;
+}
+
+.videocontainer.display-avatar-only .displayname {
+    bottom: 6px;
+    top: auto;
+    right: 21px;
+    left: auto;
+    max-width: 25%;
+    margin-left: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 0;
+}
+
+.filmstrip {
+    #filmstripLocalVideoThumbnail {
+        .videocontainer.display-avatar-only .displayname {
+            left: -10px;
+            margin-left: 0;
+            display: none;
+        }
+    
+        .videocontainer.display-avatar-with-name .displayname {
+            left: 10px;
+            display: none;
+        }
+        
+    }
 }
 
 .remote-videos-container {
@@ -322,6 +350,14 @@ button.fserWm {
             }
 
         }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .videocontainer.display-avatar-only .displayname {
+        bottom: -7px;
+        top: auto;
+        right: 0;
     }
 }
 
